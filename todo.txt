@@ -1,0 +1,4 @@
+specifications
+-pin by default
+-change icon based on weather
+-change background of tabs to display info

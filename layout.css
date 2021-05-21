@@ -1,0 +1,21 @@
+body{
+	background-color:lightgray;
+
+	width:400px;
+}
+#titles{
+	display:inline-block;
+}
+h5{
+	display:inline;
+	margin-right: 10px;
+}
+h3{
+	display:inline;
+	margin-right: 0px;
+}
+#forecast{
+	margin:1;
+	display:inline;
+	background-color:red;
+}
