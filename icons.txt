@@ -1,5 +1,5 @@
-Clear,&#x1F324; 
-Sunny,&#x2600; 
+Clear,&#x1F324;
+Sunny,&#x2600;
 Partly cloudy,&#x26C5;
 Cloudy,&#x2601;
 Overcast,&#x2601;

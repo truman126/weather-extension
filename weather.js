@@ -3,6 +3,11 @@ var region = "land";
 var temp = 666;
 var desc = "cloudy with a chance of meatballs"
 var icon = 0;
+function checkLastFetch() {
+    var mydata = JSON.parse(data);
+    console.log(mydata[0].name);
+}
+
 function getWeather() {
     $.getJSON("https://wttr.in/?format=j1", function (data) {
         updateWeather(data);
@@ -26,22 +31,22 @@ function updateWeather(data) {
     document.getElementById('weatherIcon').innerHTML = icon;
 };
 
-function matchDesc(desc){
-    var icon = 'poop';
-    $.get('icons.txt', function(data) {
+function matchDesc(desc) {
+    var icon = 'sun';
+    $.get('icons.txt', function (data) {
         var lines = data.split("\n");
         var text = [];
-        
-        for (i=0; i < lines.length;i++){
+
+        for (i = 0; i < lines.length; i++) {
             text[i] = lines[i].split(",");
-            if (text[i][0] == desc){
+            if (text[i][0] == desc) {
                 console.log("found!!!");
                 icon = text[i][1];
                 break;
             }
         }
-     });
+    });
     return icon;
 };
-
+checkLastFetch();
 getWeather();
