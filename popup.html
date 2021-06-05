@@ -2,27 +2,35 @@
 <html>
   <head>
 	  <title>Weather</title>
-    <!-- <script src="popup.js"></script> -->
-    <script src="jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="icons.js"></script>
+    
+
     
     <link rel="stylesheet" href="layout.css">
   </head>
   <body>
-    <h1>The Weather</h1>
-    <div>
-	    <h5>Today's Forecast</h5>
-	    <h5 id='loc'>Location</h5>
+
+
+    <div id="top-bar">
+	    <h3>Today's Forecast</h3>
+	    <h3 id='location'>Location</h3>
+      <div>
+        <input type="checkbox" class="checkbox" id="chk" />
+        <label class="label" for="chk">
+          <i class="fas fa-moon"></i>
+          <i class="fas fa-sun"></i>
+          <div class="ball"></div>
+        </label>
+      </div>
+        
+      
     </div>
     <div>
 	    
-	    <h3 id="weatherIcon">&#x2600;</h3>
-	    <h3 id="weatherTemp">666</h3>
+	    <h1 id="weatherIcon"></h3>
+	    <h1 id="weatherTemp">666</h3>
     </div>
-
-
     <script src="weather.js"></script>
-    <script type="text/javascript" src="icons.js"></script>
-
 
   </body>
 </html>
