@@ -7,21 +7,32 @@
 body {
   background-color: #eeeeee;
   color: #333333;
-  width: 100%;
+  width: 300px;
   /* display: flexbox; */
+}
+body p{
+  color: #eeeeee;
 }
 .container{
 	position:relative;
-	width:100%;
+	/* width:100%; */
+  padding:10px;
 }
 .icon {
   font-size: 40px;
+  margin: 0;
+}
+.mini-icon{
+  font-size: 20px;
   margin: 0;
 }
 
 body.dark {
   background: #333333;
   color: #eeeeee;
+}
+body.dark p{
+  color:#eeeeee;
 }
 .checkbox {
   opacity: 0;
@@ -33,37 +44,62 @@ body.dark {
 .weather{
 	text-align:center;
 }
+.misc{
+  align-items: center;
+  height: auto;
+  float:right;
+  /* width:100%; */
+}
 
-/* panels */
-.left-panel {
-  background-color: skyblue;
-  position: absolute;
-  left: 0px;
-  width: 45%;
+h1, h2, h3, h4, h5 {
+  margin:1% ;
+  /* padding: 0; */
+  text-align: center;
 }
-.right-panel {
-  background-color: skyblue;
-  position: absolute;
-  right: 0px;
-  width: 45%;
+
+
+
+/* unit switcher */
+
+.cels{
+  display:default;
 }
+
+.fahr {
+  display:none;
+}
+
 
 
 /* table css */
 
-table {
-  width: 50%;
+table, tbody {
+  width: 100%;
   margin-right: 0;
   margin-left: 0;
-}
-tbody {
+  margin-top: 10px;
+  padding:0;
+  vertical-align: top;
   display: 100%;
+  align-items: center;
+  overflow:hidden;
+
 }
-tr {
+table{
+  border: 1px solid black;
+
 }
 td {
-  padding: 10%;
-  margin-right: 10px;
+  /* border: 1px solid black; */
+  padding: 0;
+  margin:0;
+
+}
+tr{
+  text-align: center;
+  padding:0;
+  margin:0;
+  width:10%;
 }
 
 /* css for nightmode button and nightmode icons */
@@ -79,6 +115,7 @@ td {
   height: 26px;
   width: 50px;
   transform: scale(1.5);
+  float:right;
 }
 
 .label .ball {
@@ -108,9 +145,17 @@ td {
   color: orange;
 }
 
-.night-mode-switch{
-	margin: 25px;
-	padding:0;
-	margin-top:10px;
+.switch{
 
+	padding:0;
+	margin: 25px 25px 10px 10px;
+  zoom: 0.60;
+  -moz-transform: scale(0.60);
+  z-index: 1;
+  top:0;
+  right:0;
+  height:auto;
+  width:auto;
+  line-height: 30px;
+  display:inline-block;
 }

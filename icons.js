@@ -24,7 +24,7 @@ function getIcon(desc){
         "partly cloudy" : "&#x26C5;",
         "cloudy" : "&#x2601;",
         "overcast" : "&#x2601;",
-        "mist" : "&#x1F4A7;",
+        "mist" : "&#x1F32B;",
         "patchy rain possible" : "&#x1F327;",
         "patchy snow possible" : "&#x1F328;",
         "patchy sleet possible" : "&#x1F328;",
@@ -74,7 +74,6 @@ function getIcon(desc){
     
     };
     let iconArray = desc.split(", ");
-    desc = "snow";
 
     result = scan(icons, iconArray);
  

@@ -17,9 +17,13 @@ function check() {
   var lastUpdateTime = new Date(data.current[0].time);
   var currentTime = new Date();
 
-  lastUpdateTime = new Date(lastUpdateTime.getTime() + 30 * 60000);
-  if (lastUpdateTime < currentTime) {
+  lastUpdateTime = new Date(lastUpdateTime.getTime() + 30 * 30000);
+
+  console.log('lastUpdateTime', lastUpdateTime);
+  console.log('currentTime', currentTime)
+  if (lastUpdateTime < currentTime.getTime()) {
     //the time has exceeded, a weather update is needed
+    console.log('report expired, fetching new data')
     updateReport();
   }
 }
@@ -35,7 +39,7 @@ function updateReport() {
         current: [
           {
             time: new Date(),
-            temp_F: data.current_condition[0].temp_F,
+            tempF: data.current_condition[0].temp_F,
             city: data.nearest_area[0].areaName[0].value,
             region: data.nearest_area[0].region[0].value,
             tempC: data.current_condition[0].temp_C,
@@ -47,28 +51,28 @@ function updateReport() {
           [
             {
               tempC: data.weather[0].hourly[2].tempC,
-              temp_F: data.weather[0].hourly[2].tempF,
+              tempF: data.weather[0].hourly[2].tempF,
               desc: data.weather[0].hourly[2].weatherDesc[0].value,
               icon: getIcon(data.weather[0].hourly[2].weatherDesc[0].value),
               precip: data.weather[0].hourly[2].chanceofrain,
             },
             {
               tempC: data.weather[0].hourly[4].tempC,
-              temp_F: data.weather[0].hourly[4].tempF,
+              tempF: data.weather[0].hourly[4].tempF,
               desc: data.weather[0].hourly[4].weatherDesc[0].value,
               icon: getIcon(data.weather[0].hourly[4].weatherDesc[0].value),
               precip: data.weather[0].hourly[4].chanceofrain,
             },
             {
               tempC: data.weather[0].hourly[6].tempC,
-              temp_F: data.weather[0].hourly[6].tempF,
+              tempF: data.weather[0].hourly[6].tempF,
               desc: data.weather[0].hourly[6].weatherDesc[0].value,
               icon: getIcon(data.weather[0].hourly[6].weatherDesc[0].value),
               precip: data.weather[0].hourly[6].chanceofrain,
             },
             {
               tempC: data.weather[0].hourly[7].tempC,
-              temp_F: data.weather[0].hourly[7].tempF,
+              tempF: data.weather[0].hourly[7].tempF,
               desc: data.weather[0].hourly[7].weatherDesc[0].value,
               icon: getIcon(data.weather[0].hourly[7].weatherDesc[0].value),
               precip: data.weather[0].hourly[7].chanceofrain,
@@ -77,28 +81,28 @@ function updateReport() {
           [
             {
               tempC: data.weather[1].hourly[2].tempC,
-              temp_F: data.weather[1].hourly[2].tempF,
+              tempF: data.weather[1].hourly[2].tempF,
               desc: data.weather[1].hourly[2].weatherDesc[0].value,
               icon: getIcon(data.weather[1].hourly[2].weatherDesc[0].value),
               precip: data.weather[1].hourly[2].chanceofrain,
             },
             {
               tempC: data.weather[1].hourly[4].tempC,
-              temp_F: data.weather[1].hourly[4].tempF,
+              tempF: data.weather[1].hourly[4].tempF,
               desc: data.weather[1].hourly[4].weatherDesc[0].value,
               icon: getIcon(data.weather[1].hourly[4].weatherDesc[0].value),
               precip: data.weather[1].hourly[4].chanceofrain,
             },
             {
               tempC: data.weather[1].hourly[6].tempC,
-              temp_F: data.weather[1].hourly[6].tempF,
+              tempF: data.weather[1].hourly[6].tempF,
               desc: data.weather[1].hourly[6].weatherDesc[0].value,
               icon: getIcon(data.weather[1].hourly[6].weatherDesc[0].value),
               precip: data.weather[1].hourly[6].chanceofrain,
             },
             {
               tempC: data.weather[1].hourly[7].tempC,
-              temp_F: data.weather[1].hourly[7].tempF,
+              tempF: data.weather[1].hourly[7].tempF,
               desc: data.weather[1].hourly[7].weatherDesc[0].value,
               icon: getIcon(data.weather[1].hourly[7].weatherDesc[0].value),
               precip: data.weather[1].hourly[7].chanceofrain,
@@ -107,28 +111,28 @@ function updateReport() {
           [
             {
               tempC: data.weather[2].hourly[2].tempC,
-              temp_F: data.weather[2].hourly[2].tempF,
+              tempF: data.weather[2].hourly[2].tempF,
               desc: data.weather[2].hourly[2].weatherDesc[0].value,
               icon: getIcon(data.weather[2].hourly[2].weatherDesc[0].value),
               precip: data.weather[2].hourly[2].chanceofrain,
             },
             {
               tempC: data.weather[2].hourly[4].tempC,
-              temp_F: data.weather[2].hourly[4].tempF,
+              tempF: data.weather[2].hourly[4].tempF,
               desc: data.weather[2].hourly[4].weatherDesc[0].value,
               icon: getIcon(data.weather[2].hourly[4].weatherDesc[0].value),
               precip: data.weather[2].hourly[4].chanceofrain,
             },
             {
               tempC: data.weather[2].hourly[6].tempC,
-              temp_F: data.weather[2].hourly[6].tempF,
+              tempF: data.weather[2].hourly[6].tempF,
               desc: data.weather[2].hourly[6].weatherDesc[0].value,
               icon: getIcon(data.weather[2].hourly[6].weatherDesc[0].value),
               precip: data.weather[2].hourly[6].chanceofrain,
             },
             {
               tempC: data.weather[2].hourly[7].tempC,
-              temp_F: data.weather[2].hourly[7].tempF,
+              tempF: data.weather[2].hourly[7].tempF,
               desc: data.weather[2].hourly[7].weatherDesc[0].value,
               icon: getIcon(data.weather[2].hourly[7].weatherDesc[0].value),
               precip: data.weather[2].hourly[7].chanceofrain,
@@ -144,8 +148,6 @@ function updateReport() {
 }
 
 function updateHTML() {
-
-
   //fetch the report
   let data = JSON.parse(localStorage.getItem("weatherReport"));
 
@@ -154,35 +156,50 @@ function updateHTML() {
   let date_temp = new Date();
 
   date_temp.setDate(today.getDate() + 1);
-  document.getElementById('date-1').innerHTML = date_temp.toDateString();
+  document.getElementById("date-1").innerHTML = date_temp.toDateString();
 
-
-  date_temp.setDate(today.getDate() + 1);
-  document.getElementById('date-2').innerHTML = date_temp.toDateString();
-
-
-
+  date_temp.setDate(today.getDate() + 2);
+  document.getElementById("date-2").innerHTML = date_temp.toDateString();
 
   document.getElementById("weatherIcon").innerHTML = data.current[0].icon;
-  document.getElementById("weatherTemp").innerHTML =
+  document.getElementById("weatherTempC").innerHTML =
     data.current[0].tempC + " &#x00B0;C";
-  document.getElementById("location").innerHTML =
-    "&#x1F4CC; " + data.current[0].city + ", " + data.current[0].region;
-  document.getElementById("humidity").innerHTML = "Humidity: " +
-    data.current[0].humidity + "%";
 
-    
+  document.getElementById("weatherTempF").innerHTML =
+    data.current[0].tempF + " &#x00B0;F";
+
+    document.getElementById("location").innerHTML =
+    "&#x1F4CC; " + data.current[0].city + ", " + data.current[0].region;
+
+  //create the current time to show last time updated
+  let currentTime = 0;
+  if (today.getMinutes < 10){
+    currentTime = today.getHours() + ":0" , today.getMinutes();
+  }
+  else{
+    currentTime = today.getHours() + ":" + today.getMinutes();
+
+  }
+
+  document.getElementById("update-time").innerHTML ="Last Update: " + currentTime;
+  
+  document.getElementById("humidity").innerHTML =
+    "Humidity: " + data.current[0].humidity + "%";
 
   //update the future forecast
 
   for (i = 1; i < 4; i++) {
     for (j = 1; j < 5; j++) {
-      let tempName = "temp-" + i + "-" + j;
+      let tempCName = "tempC-" + i + "-" + j;
+      let tempFName = "tempF-" + i + "-" + j;
+
       let iconName = "icon-" + i + "-" + j;
       let precipName = "precip-" + i + "-" + j;
 
-      document.getElementById(tempName).innerHTML =
+      document.getElementById(tempCName).innerHTML =
         data.forecast[i - 1][j - 1].tempC;
+        document.getElementById(tempFName).innerHTML =
+        data.forecast[i - 1][j - 1].tempF;
       document.getElementById(iconName).innerHTML =
         data.forecast[i - 1][j - 1].icon;
       if (data.forecast[i - 1][j - 1].precip > 5) {
@@ -195,12 +212,6 @@ function updateHTML() {
 }
 document.addEventListener("DOMContentLoaded", function () {
   const chk = document.getElementById("chk");
-
-
-  chk.addEventListener("change", () => {
-    document.body.classList.toggle("dark");
-  });
-  
 
   //remove this at launch
   check();
