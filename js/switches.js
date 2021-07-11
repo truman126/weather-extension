@@ -11,29 +11,22 @@ var unit = localStorage.getItem("unit");
 
 chk.addEventListener("change", () => {
   document.body.classList.toggle("dark");
-  console.log('before eval: ', darkMode);
+
   if (darkMode === 'true'){
-    console.log('changing to false')
+
     darkMode = 'false';
     localStorage.setItem("darkModeSettings", false);
     
 
   }
   else {
-    console.log('changing to true')
     darkMode = 'true';
     localStorage.setItem("darkModeSettings", true);
 
   }
 
-  
-  
-  console.log("after chamnge", darkMode);
 
   darkMode = localStorage.getItem("darkModeSettings");
-  console.log("reloading", darkMode);
-
-
 
 
 });
@@ -52,7 +45,6 @@ uchk.addEventListener("change", () => {
       unit = 'true';
       localStorage.setItem("unit", true);
       
-
   }}
   else{
     for (var i=0; i<lengthOfArray;i++){
@@ -60,19 +52,9 @@ uchk.addEventListener("change", () => {
       arrayOfElementsF[i].style.display='none';
       unit = 'false';
       localStorage.setItem("unit", false);
-
-
   }
   }
-
-  
-  
-  console.log("after chamnge", unit);
 
   unit = localStorage.getItem("darkModeSettings");
-  console.log("reloading", unit);
-
-
-
 
 });

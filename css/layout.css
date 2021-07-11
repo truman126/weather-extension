@@ -2,13 +2,12 @@
 
 * {
   box-sizing: border-box;
-  /* overflow: hidden; */
 }
 body {
   background-color: #eeeeee;
   color: #333333;
   width: 300px;
-  /* display: flexbox; */
+  font-family: Tahoma, sans-serif;
 }
 body p{
   color: #eeeeee;
@@ -26,6 +25,7 @@ body p{
   font-size: 20px;
   margin: 0;
 }
+
 
 body.dark {
   background: #333333;
@@ -47,15 +47,21 @@ body.dark p{
 .misc{
   align-items: center;
   height: auto;
-  float:right;
-  /* width:100%; */
+  width:100%;
+  right: 0;
 }
 
 h1, h2, h3, h4, h5 {
   margin:1% ;
   /* padding: 0; */
   text-align: center;
+  font-weight: lighter;
 }
+
+h3, h2 {
+  font-weight: normal;
+}
+
 
 
 
@@ -80,8 +86,8 @@ table, tbody {
   margin-top: 10px;
   padding:0;
   vertical-align: top;
-  display: 100%;
-  align-items: center;
+  /* display: 100%; */
+  /* align-items: center; */
   overflow:hidden;
 
 }
@@ -92,14 +98,14 @@ table{
 td {
   /* border: 1px solid black; */
   padding: 0;
-  margin:0;
-
+  margin:0;  
 }
-tr{
+th{
+  width:auto;
   text-align: center;
-  padding:0;
-  margin:0;
-  width:10%;
+}
+th:not(:first-child) {
+  width: 0;
 }
 
 /* css for nightmode button and nightmode icons */
@@ -146,16 +152,17 @@ tr{
 }
 
 .switch{
-
-	padding:0;
-	margin: 25px 25px 10px 10px;
+	margin: 0;
+  padding:10px 20px 10px 20px;
   zoom: 0.60;
   -moz-transform: scale(0.60);
-  z-index: 1;
-  top:0;
   right:0;
-  height:auto;
+  height:50px;
   width:auto;
   line-height: 30px;
   display:inline-block;
+  
+}
+.misc .switch{
+  float:right;
 }

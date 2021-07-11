@@ -1,40 +1,26 @@
-// var city = "strawberry";
-// var region = "land";
-// var temp = 666;
-// var desc = "cloudy with a chance of meatballs";
-// var icon = 0;
 
 function check() {
   var data = localStorage.getItem("weatherReport");
-  data = null;
-  if (data == null) {
-    //there was no previous fetch for data, fetch and store
-    updateReport();
-  } else {
-    console.log("old is good");
-  }
+
   data = JSON.parse(localStorage.getItem("weatherReport"));
   var lastUpdateTime = new Date(data.current[0].time);
   var currentTime = new Date();
 
-  lastUpdateTime = new Date(lastUpdateTime.getTime() + 30 * 30000);
+  lastUpdateTime = new Date(lastUpdateTime.getTime() + 15 * 60000);
 
-  console.log('lastUpdateTime', lastUpdateTime);
-  console.log('currentTime', currentTime)
+
   if (lastUpdateTime < currentTime.getTime()) {
     //the time has exceeded, a weather update is needed
-    console.log('report expired, fetching new data')
+
     updateReport();
   }
 }
 
 function updateReport() {
-  console.log("updating the report");
   //fetch the weather from wttr.in
   fetch("https://wttr.in/?format=j1")
     .then((response) => response.json())
     .then((data) => {
-      console.log(data);
       let report = {
         current: [
           {
@@ -141,7 +127,7 @@ function updateReport() {
         ],
       };
 
-      console.log(report);
+
       //store report in local storage
       localStorage.setItem("weatherReport", JSON.stringify(report));
     });
@@ -172,12 +158,15 @@ function updateHTML() {
     "&#x1F4CC; " + data.current[0].city + ", " + data.current[0].region;
 
   //create the current time to show last time updated
-  let currentTime = 0;
-  if (today.getMinutes < 10){
-    currentTime = today.getHours() + ":0" , today.getMinutes();
+  let lastUpdate = new Date(data.current[0].time)
+
+  let currentTime;
+  if (lastUpdate.getMinutes() < 10){
+    currentTime = lastUpdate.getHours() + ":0" + lastUpdate.getMinutes();
+
   }
   else{
-    currentTime = today.getHours() + ":" + today.getMinutes();
+    currentTime = lastUpdate.getHours() + ":" + lastUpdate.getMinutes();
 
   }
 
