@@ -3,6 +3,9 @@ function check() {
   var data = localStorage.getItem("weatherReport");
 
   data = JSON.parse(localStorage.getItem("weatherReport"));
+  if (data == null){
+    updateReport();
+  }
   var lastUpdateTime = new Date(data.current[0].time);
   var currentTime = new Date();
 
