@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Truman's Weather Extension",
+    "description": "This extension will tell you the weather.",
+    "version": "2.0",
+    "action": {
+      "default_icon": "img/sun.png",
+      "default_popup": "popup.html"
+    },
+    "background": {
+        "service_worker": "background.js"
+    }
+  }
